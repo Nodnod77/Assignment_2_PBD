@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodnodShop</title>
+    {% load static %} <!-- lload static files for css style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to NodnodShop 🎉</h1>
+<p> Find your dream super power in Nodnod magnificient shop</p>
+        <span>--------------------</span>
+
+        <h5>Application name :</h5>
+        <p>{{ appName }}</p>
+
+        <h5>NPM: </h5>
+        <p>{{ npm }}</p>
+
+        <h5>Name: </h5>
+        <p>{{ name }}</p>
+
+        <h5>Class: </h5>
+        <p>{{ class }}</p>
+    </div>
+</body>
+</html>
