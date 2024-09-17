@@ -1,29 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NodnodShop</title>
-    {% load static %} <!-- lload static files for css style -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-    <div class="container">
-        <h1>Welcome to NodnodShop 🎉</h1>
-<p> Find your dream super power in Nodnod magnificient shop</p>
-        <span>--------------------</span>
+{% extends 'base.html' %}
+{% block content %}
+<h1>Nodnodshop</h1>
 
-        <h5>Application name :</h5>
-        <p>{{ appName }}</p>
+<h5>NPM: </h5>
+<p>{{ npm }}<p>
 
-        <h5>NPM: </h5>
-        <p>{{ npm }}</p>
+<h5>Name:</h5>
+<p>{{ name }}</p>
 
-        <h5>Name: </h5>
-        <p>{{ name }}</p>
+<h5>Class:</h5>
+<p>{{ class }}</p>
 
-        <h5>Class: </h5>
-        <p>{{ class }}</p>
-    </div>
-</body>
-</html>
+<h5>App name:</h5>
+<p>{{ appName }}</p>
+
+{% if not form_entries %}
+<p>There are no form data in nodnodshop feedback.</p>
+{% else %}
+<table>
+  <tr>
+    <th>data 1</th>
+    <th>user experience</th>
+    <th>apples were good</th>
+  </tr>
+
+  {% comment %} This is how to display form data
+  {% endcomment %} 
+  {% for form_entry in form_entries %}
+  <tr>
+    <td>{{form_entry.data1}}</td>
+    <td>{{form_entry.data2}}</td>
+    <td>{{form_entry.data3}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+<br />
+
+<a href="{% url 'main:create_form_entry' %}">
+  <button>Add New Form entry </button>
+</a>
+
+{% endblock content %}
