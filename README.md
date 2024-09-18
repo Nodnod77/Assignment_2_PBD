@@ -1,3 +1,50 @@
+# Assignment_3_PBP
+
+### Explain why we need data delivery in implementing a platform.
+
+Data delivery in a Django project is crucial because it allows users to interact with the platform by retrieving and displaying information from the database. It supports dynamic content, API integration, scalability, and ensures secure handling of data across the system.
+
+### In your opinion, which is better, XML or JSON? Why is JSON more popular than XML?
+
+JSON is generally considered better for modern applications because it's simpler, more lightweight, and easier for both humans and machines to read and write. JSON's structure is more aligned with data types in most programming languages, making it easier to parse and manipulate. It became more popular than XML due to its minimal syntax and efficiency, especially for web APIs and data exchange in modern web applications.
+
+###  Explain the functional usage of is_valid() method in Django forms. Also explain why we need the method in forms.
+
+The is_valid() method in Django forms checks if the form's data is valid based on the defined field types and validation rules. It returns `True` if all fields pass validation and `False` otherwise. It also populates the form's `cleaned_data` attribute with the validated data for further processing.
+We need this method to ensure that the user input is correct before saving or processing it, preventing invalid or harmful data from entering the system and maintaining data integrity.
+
+### Why do we need csrf_token when creating a form in Django? What could happen if we did not use csrf_token on a Django form? How could this be leveraged by an attacker?
+
+The `csrf_token` in Django forms is needed to protect against Cross-Site Request Forgery (CSRF) attacks. It ensures that the form submission comes from the legitimate site and not from an external malicious source. Without `csrf_token`, attackers could create malicious forms or links that trick users into submitting unauthorized requests to your site (e.g., changing account details, performing unwanted actions). An attacker could exploit this by embedding hidden forms in a malicious website, which users unknowingly submit while authenticated to your site, leading to unauthorized actions being performed.
+
+
+
+### Explain how you implemented the checklist above step-by-step (not just following the tutorial).
+
+I implemented a new model for the form object, made the fonction in view to links and see different information and the template and finally the routing with urls.
+
+
+## Postman Screenshots :
+
+### /xml
+
+![alt text](image.png)
+
+### /json
+
+![alt text](image-2.png)
+
+### /xml/[ id ]
+
+![alt text](image-3.png)
+
+### json/[ id ]
+
+![alt text](image-4.png)
+
+
+-------------------------------------
+
 # Assignment_2_PBD
 Assignement week 2 Platform base dev
 
