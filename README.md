@@ -1,3 +1,28 @@
+# Assignment_4_PBP
+
+### What is the difference between HttpResponseRedirect() and redirect()?
+
+The main difference between `HttpResponseRedirect()` and `redirect()` in Django is that `HttpResponseRedirect()` is a lower-level function used to create a redirect response by passing the target URL explicitly, whereas `redirect()` is a shortcut that automatically determines the URL to redirect to based on the arguments provided, such as a URL name, a view name, or a model instance. Both ultimately perform a redirection, but `redirect()` simplifies the process by handling different types of input.
+
+### Explain how the MoodEntry model is linked with User
+
+The `MoodEntry` model is linked to the `User` model through a foreign key relationship. Each `MoodEntry` instance has a `user` field that references a specific user, allowing multiple mood entries to be associated with one user. If the user is deleted, all related mood entries are also removed, ensuring data integrity.
+
+### What is the difference between authentication and authorization, and what happens when a user logs in? Explain how Django implements these two concepts.
+
+Authentication verifies a user's identity, ensuring they are who they claim to be, typically through credentials like a username and password. When a user logs in, Django checks the provided credentials against stored data. If they match, Django authenticates the user and creates a session, allowing access to the application.
+
+Authorization, on the other hand, determines what an authenticated user is allowed to do. After logging in, Django uses permissions and groups to control access to views and resources. Users can be assigned specific permissions, and views can restrict access based on these permissions, ensuring that users can only perform actions they are authorized to do.
+
+### How does Django remember logged-in users? Explain other uses of cookies and whether all cookies are safe to use.
+
+Django remembers logged-in users through sessions, which are stored on the server side. When a user logs in, Django creates a session and assigns a unique session ID, which is sent to the user's browser as a cookie. On subsequent requests, the browser returns this cookie to the server, allowing Django to identify the user and maintain their logged-in state.
+
+Cookies can also serve various purposes, such as storing user preferences, tracking analytics, managing shopping carts, and implementing user-specific features. However, not all cookies are safe to use. They can be intercepted or manipulated if not secured properly, and using the `Secure` and `HttpOnly` flags can help mitigate these risks. Additionally, cookies can track user behavior across sites, raising privacy concerns. Unvalidated cookie data can also lead to vulnerabilities, such as session hijacking. It is essential to implement proper security measures when using cookies to protect user data and privacy.
+
+### Explain how did you implement the checklist step-by-step (apart from following the tutorial).
+I add the new function in view to have the login and logout. Updated the templates with a new html file and update also the main file. All of this is possible because of the function and object django provide to us to implement a login and logout.
+
 # Assignment_3_PBP
 
 ### Explain why we need data delivery in implementing a platform.

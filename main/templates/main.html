@@ -41,6 +41,7 @@
 <a href="{% url 'main:create_form_entry' %}">
   <button>Add New Form entry </button>
 </a>
+<span>Last login : {{last_login}}</span>
 <button><a href="{% url 'main:logout' %}" class="btn btn-primary">Logout</a></button>
 
 {% endblock content %}
