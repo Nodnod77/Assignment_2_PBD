@@ -13,7 +13,8 @@ import datetime
 # Create your views here.
 @login_required(login_url='/login')
 def show_main(request):
-    form_entries = FormEntry.objects.all()
+    user = request.user
+    form_entries = FormEntry.objects.filter(user = user)
 
     context = {
         'npm' : '2406394906 ',
@@ -33,7 +34,9 @@ def create_form_entry(request):
     form = FormEntryForm(request.POST or None)
 
     if form.is_valid() and request.method == "POST":
-        form.save()
+        form_entry = form.save(commit=False)
+        form_entry.user = request.user  # Assignez l'utilisateur actuel
+        form_entry.save()
         return redirect('main:show_main')
 
     context = {'form': form}
@@ -89,3 +92,27 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+
+
+def edit_product(request, id):
+    # Get mood entry based on id
+    product = FormEntry.objects.get(pk = id)
+
+    # Set mood entry as an instance of the form
+    form = FormEntryForm(request.POST or None, instance=product)
+
+    if form.is_valid() and request.method == "POST":
+        # Save form and return to home page
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_product.html", context)
+
+def delete_product(request, id):
+    # Get mood based on id
+    product = FormEntry.objects.get(pk = id)
+    # Delete mood
+    product.delete()
+    # Return to home page
+    return HttpResponseRedirect(reverse('main:show_main'))
