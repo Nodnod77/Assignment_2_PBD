@@ -1,3 +1,31 @@
+# Assignement_5_PBP
+
+###  If there are multiple CSS selectors for an HTML element, explain the priority order of these CSS selectors!
+
+When multiple CSS selectors are applied to an HTML element, the browser determines which rule to apply based on specificity. Specificity follows a hierarchy where inline styles have the highest priority, meaning styles applied directly within an HTML element (e.g., style="color:red;") will override any other styles. The next in line are ID selectors, which apply to elements that are identified with a unique ID (e.g., #header). Following IDs, class selectors, pseudo-classes (e.g., :hover), and attribute selectors are considered. Finally, element selectors like div, p, or h1 have the lowest specificity. In cases where two or more rules have the same specificity, the one that appears last in the CSS will be applied, giving it precedence over the others.
+
+### Why does responsive design become an important concept in web application development? Give examples of applications that have and have not implemented responsive design!
+
+Responsive design has become crucial in web development as it ensures that websites and applications function optimally on a variety of devices, particularly those with different screen sizes. This concept is vital because users access web applications on a range of devices, from smartphones and tablets to desktops, and the design must adjust accordingly. Responsive design enhances user experience, providing a consistent look and feel across all devices. 
+
+### Explain the differences between margin, border, and padding, and how to implement these three things!
+
+Margin, border, and padding are three distinct properties in CSS that control the space around and within an element. The margin is the space outside the border of an element, used to create distance between the element and neighboring elements. The border is the visible line or outline that surrounds the padding and content of the element, giving it a defined boundary. Padding is the space between the content of the element and its border, used to create internal spacing within the element. 
+
+![alt text](<Sans titre.jpg>)
+
+### Explain the concepts of flex box and grid layout along with their uses!
+
+Flexbox and grid layout are two CSS tools that help design layouts in a more efficient and structured way. Flexbox is a layout model that allows elements to align and distribute space within a container in a single dimension, either in rows or columns. It is particularly useful for creating flexible and responsive designs where items need to align or space themselves relative to others, such as in navigation bars or horizontally aligned content. On the other hand, the grid layout is a two-dimensional system that allows for the placement of elements in rows and columns. It provides greater control over both horizontal and vertical alignment, making it ideal for complex layouts, such as those seen in dashboards or galleries where multiple rows and columns are needed. Both layout methods help in creating responsive designs that adjust seamlessly across devices and screen sizes.
+
+![alt text](grid_vs_flexbox.png)
+
+### Explain how you implemented the checklist above step-by-step (not just following the tutorial)!
+
+To implement the checklist, I created a new HTML file to be used in other components such as the navbar and the card. I also added the edit and delete functions in the view, linking them in the URLs and HTML to enable the delete and edit buttons. Finally, I added CSS to style the website pages.
+
+
+
 # Assignment_4_PBP
 
 ### What is the difference between HttpResponseRedirect() and redirect()?
