@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect , reverse
 from main.forms import FormEntryForm
 from main.models import FormEntry
 from django.http import HttpResponse ,HttpResponseRedirect
@@ -114,5 +114,28 @@ def delete_product(request, id):
     product = FormEntry.objects.get(pk = id)
     # Delete mood
     product.delete()
+    # Return to home page
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+def edit_form(request, id):
+    # Get mood entry based on id
+    form = FormEntry.objects.get(pk = id)
+
+    # Set mood entry as an instance of the form
+    form = FormEntryForm(request.POST or None, instance=form)
+
+    if form.is_valid() and request.method == "POST":
+        # Save form and return to home page
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_form.html", context)
+
+def delete_form(request, id):
+    # Get mood based on id
+    form = FormEntry.objects.get(pk = id)
+    # Delete mood
+    form.delete()
     # Return to home page
     return HttpResponseRedirect(reverse('main:show_main'))
