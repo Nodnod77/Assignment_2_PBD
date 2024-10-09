@@ -18,7 +18,7 @@ from django.utils.html import strip_tags
 def show_main(request):
     user = request.user
    
-
+    print("shoow")
     context = {
         'npm' : '2406394906 ',
         'name': 'Donia Sakji',
@@ -33,11 +33,12 @@ def show_main(request):
 
 
 def create_form_entry(request):
+    print("aaaaaaaaaaaa")
     form = FormEntryForm(request.POST or None)
 
     if form.is_valid() and request.method == "POST":
         form_entry = form.save(commit=False)
-        form_entry.user = request.user  # Assignez l'utilisateur actuel
+        form_entry.user = request.user  
         form_entry.save()
         return redirect('main:show_main')
 
@@ -49,6 +50,7 @@ def show_xml(request):
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")    
 
 def show_json(request):
+    print("show_json")
     data = FormEntry.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
@@ -83,9 +85,11 @@ def login_user(request):
         response = HttpResponseRedirect(reverse("main:show_main"))
         response.set_cookie('last_login', str(datetime.datetime.now()))
         return response
+      else :
+        messages.error(request, "Invalid username or password. Please try again.")
 
    else:
-      messages.error(request, "Invalid username or password. Please try again.")
+      form = AuthenticationForm(request)
    context = {'form': form}
    return render(request, 'login.html', context)
 
@@ -145,14 +149,17 @@ def delete_form(request, id):
 @csrf_exempt
 @require_POST
 def add_form_entry_ajax(request):
-    form =strip_tags (request.POST.get("form") )
-    feelings = strip_tags (request.POST.get("feelings"))
-    form_intensity = request.POST.get("form_intensity")
+    data1 = strip_tags (request.POST.get("data1") )
+    print(data1,"je suis iciii 1")
+    data2 = strip_tags (request.POST.get("data2"))
+    print(data2,"je suis iciii 2")
+    data3 = request.POST.get("data3")
+    print(data3,"je suis iciii 3")
     user = request.user
-
+    print(user,"je suis iciii 4")
     new_form = FormEntry(
-        form=form, feelings=feelings,
-        form_intensity=form_intensity,
+        data1=data1, data2=data2,
+        data3=data3,
         user=user
     )
     new_form.save()
