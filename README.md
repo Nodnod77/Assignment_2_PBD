@@ -1,3 +1,32 @@
+# Assignement_6_PBP
+
+### Explain the benefits of using JavaScript in developing web applications!
+
+JavaScript is essential in web development because it allows for creating dynamic, interactive user interfaces without needing to reload the page. This improves user experience by enabling real-time content updates, such as form validation or live search. It runs natively in all browsers, ensuring cross-platform compatibility on desktops and mobile devices. And it's very versatil as we can code in js for back-end to with nodejs.
+
+### Explain why we need to use await when we call fetch()! What would happen if we don't use await?
+
+We use await when calling fetch() because fetch() returns a Promise, which represents an asynchronous operation. The await keyword tells JavaScript to pause execution until the Promise resolves, allowing us to handle the data once it is available. Without await, the code will continue executing without waiting for fetch() to complete, potentially leading to issues where the data is not yet available when you try to use it. 
+
+### Why do we need to use the csrf_exempt decorator on the view used for AJAX POST?
+
+
+The csrf_exempt decorator is used on a Django view handling an AJAX POST request to disable CSRF (Cross-Site Request Forgery) protection for that specific view. By default, Django includes CSRF protection on all POST requests to prevent malicious websites from making unauthorized requests on behalf of users.
+
+When you send an AJAX POST request, if the CSRF token is not included in the request, Django will block the request and raise a 403 Forbidden error. The csrf_exempt decorator tells Django to skip CSRF validation for that view, allowing the AJAX POST request to go through without requiring a valid CSRF token.
+It’s also important to note that disabling CSRF protection reduces security. 
+
+### On this week's tutorial, the user input sanitization is done in the back-end as well. Why can't the sanitization be done just in the front-end?
+
+Sanitizing user input only in the front-end is not enough because it can be bypassed. Users can manipulate or disable front-end validation, for example, by using browser developer tools or sending requests directly to the server. If sanitization is only done on the front-end, malicious input could still reach the back-end, potentially leading to security vulnerabilities like SQL injection or XSS (Cross-Site Scripting). Therefore, sanitization must also be done on the back-end to ensure all input is secure, regardless of how it was submitted.
+
+###  Explain how you implemented the checklist above step-by-step (not just following the tutorial)!
+
+To implement this checklist, I primarily used JavaScript with AJAX in the main.html file to handle GET and POST requests, so I added the necessary functions and created the events for the modal. I also modified the view to include a new function for managing AJAX requests and linked it to the URLs and templates. I also added the  strip_tags utils from Django to avoid Cross-Site Scripting.
+
+
+
+
 # Assignement_5_PBP
 
 ###  If there are multiple CSS selectors for an HTML element, explain the priority order of these CSS selectors!
