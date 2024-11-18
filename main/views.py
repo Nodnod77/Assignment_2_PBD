@@ -18,14 +18,13 @@ from django.utils.html import strip_tags
 def show_main(request):
     user = request.user
    
-    print("shoow")
     context = {
         'npm' : '2406394906 ',
         'name': 'Donia Sakji',
         'login name' : request.user.username,
         'class': 'PBP KKI',
         'appName': 'nodnodShop',
-        'last_login': request.COOKIES.get('last_login', 'Never') ,
+        'last_login': request.COOKIES.get('last_login', 'Never'),
     }
 
     return render(request, "main.html", context)
@@ -33,7 +32,6 @@ def show_main(request):
 
 
 def create_form_entry(request):
-    print("aaaaaaaaaaaa")
     form = FormEntryForm(request.POST or None)
 
     if form.is_valid() and request.method == "POST":

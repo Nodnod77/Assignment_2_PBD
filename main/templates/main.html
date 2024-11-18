@@ -25,7 +25,7 @@
 </div>
     <div class="px-3 mb-4">
       <div class="flex rounded-md items-center bg-indigo-600 py-2 px-4 w-fit">
-        <h1 class="text-white text-center">Last Login: {{last_login}}</h1>
+        <h1 id="date" class="text-white text-center">Last Login: {{last_login}}</h1>
       </div>
     </div>
     <div class="flex justify-end mb-6">
@@ -78,12 +78,19 @@
 
 
 <script>
+
+  let newDate = timestamp => {
+    let date = new Date(timestamp);
+    return date.toLocaleString();
+  }
+
+  document.getElementById('date').innerHTML = `Last Login: ${newDate('{{last_login}}')}`;
+
   async function getFormEntries(){
       return fetch("{% url 'main:show_json' %}").then((res) => res.json())
   }
 
   async function refreshFormEntries() {
-    console.log ('eee')
     document.getElementById("form_entry_cards").innerHTML = "";
     document.getElementById("form_entry_cards").className = "";
     const formEntries = await getFormEntries();
